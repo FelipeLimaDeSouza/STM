@@ -1,0 +1,20 @@
+RewriteEngine on
+RewriteBase /
+Options +FollowSymLinks
+
+RewriteCond %{HTTP_HOST} !=""
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteCond %{HTTPS}s ^on(s)|
+RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+RewriteRule ^([^\.]+)$ http%1://%{HTTP_HOST} [NC,L]
+
+RewriteRule ^alterar.php$ http%1://www.stm-sistema.com.br/sessao-ponto/view/home.php [R=301,L]
+RewriteRule ^cadastro.php$ http%1://www.stm-sistema.com.br/sessao-ponto/view/home.php [R=301,L]
+RewriteRule ^excluir.php$ http%1://www.stm-sistema.com.br/sessao-ponto/view/home.php [R=301,L]
+RewriteRule ^hup.php$ http%1://www.stm-sistema.com.br/sessao-ponto/view/home.php [R=301,L]
+RewriteRule ^menu.php$ http%1://www.stm-sistema.com.br/sessao-ponto/view/home.php [R=301,L]
+RewriteRule ^ponto.php$ http%1://www.stm-sistema.com.br/sessao-ponto/view/home.php [R=301,L]
+RewriteRule ^usuarios.php$ http%1://www.stm-sistema.com.br/sessao-ponto/view/home.php [R=301,L]
+
+Options -Indexes
