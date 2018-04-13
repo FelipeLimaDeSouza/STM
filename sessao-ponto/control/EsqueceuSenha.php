@@ -33,8 +33,8 @@
 
 					$emailremetente    = $email;
 					$assunto           = "Contato via Site";
-					$emailsender = "email@email.email";
-					$emaildestinatario = "email@email.email";
+					$emailsender = "suporte.ti@stm-sistema.com.br";
+					$emaildestinatario = "suporte.ti@stm-sistema.com.br";
 
 	        		$quebra_linha = "\n";
 

@@ -8,7 +8,7 @@
 
 		    	</div>
 
-		      	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+		      	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 div-contato">
 		      	
 			      	<ul class="list-icons">
 
@@ -21,25 +21,7 @@
 
 					</ul>
 
-					<div class="social">
-
-						<a href="https://www.facebook.com/Stm-Sistema-Brasil-174780302627371/?ref=ts&fref=ts" target="_blank"><i class="fa fa-facebook-f fb"></i></a>
-
-						<a href="https://www.google.com.br/maps/place/STM+SISTEMA+BRASIL/@-23.6019811,-47.0179155,15z/data=!4m5!3m4!1s0x0:0x9c984f002384eb5b!8m2!3d-23.6019811!4d-47.0179155" target="_blank"><i class="fa fa-google-plus go"></i></a>
-
-						<a href="https://www.linkedin.com/company/22335470/" target="_blank"><i class="fa fa-linkedin-square lin"></i></a>
-
-					</div>
-
 		    	</div>
-
-		    	<script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-				<script src="js/responsive-nav-min.js"></script>
-				<script src="js/fastclick-min.js"></script>
-			    <script src="js/scroll-min.js"></script>
-			    <script src="js/fixed-responsive-nav-min.js"></script>
-				<script src="js/funcoes-min.js"></script>
 
 		    	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 		      	

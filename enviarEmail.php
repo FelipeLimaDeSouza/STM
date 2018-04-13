@@ -25,15 +25,15 @@
 
 			if($tipo == 1){
 
-				$emailsender="email@email.email";
+				$emailsender="comercial@stm-sistema.com.br";
 
-				$emaildestinatario = "email@email.email";
+				$emaildestinatario = "comercial@stm-sistema.com.br";
 
 			}elseif ($tipo == 2) {
 
-				$emailsender="email@email.email";
+				$emailsender="rh@stm-sistema.com.br";
 
-				$emaildestinatario = "email@email.email";
+				$emaildestinatario = "rh@stm-sistema.com.br";
 
 			}
 
