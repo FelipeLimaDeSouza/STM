@@ -32,29 +32,8 @@ CREATE TABLE tb_ponto(
 
 INSERT INTO tb_user(user_nome, user_email, user_senha, user_ip, user_tipo)
 VALUES('Felipe Lima de Souza', 'felipe@stm-sistema.com.br', md5('210891'), null, 1);
-
-INSERT INTO tb_ponto(ponto_data, ponto_entrada, ponto_almoco, ponto_volta_almoco, ponto_saida, user_id_ponto)
-VALUES(curdate(), '09:01', curtime(), '13:01', '16:05', 1);
-INSERT INTO tb_ponto(ponto_data, ponto_entrada, ponto_almoco, ponto_volta_almoco, ponto_saida, user_id_ponto)
-VALUES(curdate(), '09:01', curtime(), '13:01', '16:05', 1);
-INSERT INTO tb_ponto(ponto_data, ponto_entrada, ponto_almoco, ponto_volta_almoco, ponto_saida, user_id_ponto)
-VALUES(curdate(), '09:01', curtime(), '13:01', '16:05', 1);
-INSERT INTO tb_ponto(ponto_data, ponto_entrada, ponto_almoco, ponto_volta_almoco, ponto_saida, user_id_ponto)
-VALUES(curdate(), '09:01', curtime(), '13:01', '16:05', 1);
-INSERT INTO tb_ponto(ponto_data, ponto_entrada, ponto_almoco, ponto_volta_almoco, ponto_saida, user_id_ponto)
-VALUES(curdate(), '09:01', curtime(), '13:01', '16:05', 1);
-INSERT INTO tb_ponto(ponto_data, ponto_entrada, ponto_almoco, ponto_volta_almoco, ponto_saida, user_id_ponto)
-VALUES(curdate(), '09:01', curtime(), '13:01', '16:05', 1);
-INSERT INTO tb_ponto(ponto_data, ponto_entrada, ponto_almoco, ponto_volta_almoco, ponto_saida, user_id_ponto)
-VALUES(curdate(), '09:01', curtime(), '13:01', '16:05', 1);
-INSERT INTO tb_ponto(ponto_data, ponto_entrada, ponto_almoco, ponto_volta_almoco, ponto_saida, user_id_ponto)
-VALUES(curdate(), '09:01', curtime(), '13:01', '16:05', 1);
-INSERT INTO tb_ponto(ponto_data, ponto_entrada, ponto_almoco, ponto_volta_almoco, ponto_saida, user_id_ponto)
-VALUES(curdate(), '09:01', curtime(), '13:01', '16:05', 1);
-INSERT INTO tb_ponto(ponto_data, ponto_entrada, ponto_almoco, ponto_volta_almoco, ponto_saida, user_id_ponto)
-VALUES(curdate(), '09:01', curtime(), '13:01', '16:05', 1);
-INSERT INTO tb_ponto(ponto_data, ponto_entrada, ponto_almoco, ponto_volta_almoco, ponto_saida, user_id_ponto)
-VALUES(curdate(), '09:01', curtime(), '13:01', '16:05', 1);
-INSERT INTO tb_ponto(ponto_data, ponto_entrada, ponto_almoco, ponto_volta_almoco, ponto_saida, user_id_ponto)
-VALUES(curdate(), '09:01', curtime(), '13:01', '16:05', 1);INSERT INTO tb_ponto(ponto_data, ponto_entrada, ponto_almoco, ponto_volta_almoco, ponto_saida, user_id_ponto)
-VALUES(curdate(), '09:01', curtime(), '13:01', '16:05', 1);
+create event cria_usu
+	on schedule EVERY 1 DAY_HOUR 
+	do
+		insert into tb_ponto(ponto_data, user_id_ponto)
+        select curdate(), user_id from tb_user;

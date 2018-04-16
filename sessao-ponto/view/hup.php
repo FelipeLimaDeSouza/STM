@@ -46,7 +46,7 @@
 				    				
 				    		?>
 				    		
-				    		<tr>
+				    		<tr <?php if($reg->ponto_entrada == null){ echo "style='background-color: #ff9898;'"; } ?>>
 				    			
 				    			<td><?php echo $date . " | " . $dia_semana; ?></td>
 				    			<td><?php echo $reg->ponto_entrada; ?></td>
