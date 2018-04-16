@@ -32,7 +32,7 @@ CREATE TABLE tb_ponto(
 
 INSERT INTO tb_user(user_nome, user_email, user_senha, user_ip, user_tipo)
 VALUES('Felipe Lima de Souza', 'felipe@stm-sistema.com.br', md5('123456'), null, 1);
-create event cria_usu
+create event cria_ponto
 	on schedule EVERY 1 DAY 
 	do
 		insert into tb_ponto(ponto_data, user_id_ponto)
