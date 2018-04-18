@@ -276,13 +276,7 @@
 
 					}else{
 
-						$retorna = $controlHp->inserirPontoDia($_SESSION['usuario_id']);
-
-						if($retorna == true){
-
-							echo "<script>location.reload();</script>";
-
-						}
+						echo "<script>location.reload();</script>";
 
 					}
 
