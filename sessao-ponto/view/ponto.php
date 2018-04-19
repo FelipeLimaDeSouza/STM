@@ -276,6 +276,8 @@
 
 					}else{
 
+						$controlHp->inserirPontoDia($_SESSION['usuario_id']);
+
 						echo "<script>location.reload();</script>";
 
 					}
