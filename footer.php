@@ -33,7 +33,7 @@
 
 	    		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 div-footer-f">
 	    		
-	    			<small class="small-footer">STM-SISTEMA Brasil Ltda. | Todos os direitos reservados © <?php echo date("Y");?><br><a href="https://www.linkedin.com/in/felipe-lima-749ab6114/" class="a-footer" style="font-size: 1.1em;" target="_blank"> Produzido por Felipe Lima de Souza</a></small>
+	    			<small class="small-footer">STM-SISTEMA Brasil Ltda. | Todos os direitos reservados © <?php echo date("Y");?><br><a href="https://www.felipe-lima.com" class="a-footer" style="font-size: 1.1em;" target="_blank"> Produzido por Felipe Lima de Souza</a></small>
 				
 				</div>
 
