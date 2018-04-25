@@ -20,6 +20,18 @@
 
         }
 
+        public function retornaPrimeiroDiaMes($ponto_data){
+            
+            return $this->model->retornaPrimeiroDiaMesDAO($ponto_data);
+
+        }
+
+        public function retornaTotalHoras($ponto_data, $user_id_ponto){
+            
+            return $this->model->retornaTotalHorasDAO($ponto_data, $user_id_ponto);
+
+        }
+
         public function retornaHpHj($id){
             
             return $this->model->retornaHpHjDAO($id);

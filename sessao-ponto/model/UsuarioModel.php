@@ -46,7 +46,7 @@
             
             try{
                 
-                $sql = "SELECT * FROM tb_user WHERE user_status = 1;";
+                $sql = "SELECT * FROM tb_user WHERE user_status = 1 ORDER BY user_nome ASC;";
                 
                 $stm = $this->pdo->prepare($sql);
 

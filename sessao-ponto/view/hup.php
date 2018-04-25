@@ -13,10 +13,11 @@
 				    		<tr>
 				    			
 				    			<th>Data</th>
-				    			<th>Entrada</th>
+				    			<th>Início</th>
 				    			<th>Saída Almoço</th>
 				    			<th>Volta Almoço</th>
-				    			<th>Saída</th>
+				    			<th>Fim</th>
+				    			<th></th>
 
 				    		</tr>
 
@@ -29,6 +30,8 @@
 				    			$dados = $controlHp->retornaHistoricoEspPessoal($_GET['hup']);
 
 				    			foreach ($dados as $reg) {
+
+				    				$horas = 0;
 
 				    				$date = date_create($reg->ponto_data);
 
@@ -43,6 +46,43 @@
 	                                	$dia_semana = $reg_semana->diadasemana;
 
 	                                }
+
+	                                $data_mes = null;
+
+				    				$dados_mes = $controlHp->retornaPrimeiroDiaMes($reg->ponto_data);
+
+				    				foreach ($dados_mes as $reg_mes) {
+				    					
+				    					$data_mes = $reg_mes->ponto_data;
+
+				    				}
+
+				    				if($reg->ponto_data == $data_mes){
+
+				    					$dados_horas = $controlHp->retornaTotalHoras($reg->ponto_data, $_GET['hup']);
+
+				    					$hora_total = "";
+
+				    					foreach ($dados_horas as $reg_horas) {
+
+				    						$horas = $reg_horas->horas;
+
+				    					}
+
+							    		echo "<tr style='background-color:#afecba;'>
+
+								    			<td>Total de Horas do mês ". date('m', strtotime($reg->ponto_data))
+								    			." de ". date('Y', strtotime($reg->ponto_data)) ." </td>
+
+								    			<td style='border-right:none; border-left:none'></td>
+								    			<td style='border-right:none; border-left:none;'></td>
+								    			<td style='border-right:none; border-left:none;'></td>
+								    			<td style='border-right:none; border-left:none'></td>
+								    			<td style='font-weight: bold;'>". $horas ."</td>
+
+								    		</tr>";
+
+				    				}
 				    				
 				    		?>
 				    		
@@ -53,10 +93,13 @@
 				    			<td><?php echo $reg->ponto_almoco; ?></td>
 				    			<td><?php echo $reg->ponto_volta_almoco; ?></td>
 				    			<td><?php echo $reg->ponto_saida; ?></td>
+				    			<td <?php if($reg->hora_dia == null){ echo "style='background-color: #ff9898;font-weight: bold;'"; } else{ echo "style='background-color: #a3b6ea;font-weight: bold;'"; } ?>><?php echo $reg->hora_dia; ?></td>
 
 				    		</tr>
 
 				    		<?php
+
+
 
 				    			}
 

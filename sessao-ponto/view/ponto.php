@@ -224,49 +224,49 @@
 
 							echo "<h2 class='h2-ponto'>Registrar ponto de hoje: ".date('d/m/Y')."</h2>
 
-								<button type='button' id='entrada'>Entrada</button>
+								<button type='button' id='entrada'>Início</button>
 
 								<button type='button' class='disable' disable>Saída Almoço</button>
 
 								<button type='button' class='disable' disable>Volta Almoço</button>
 
-								<button type='button' class='disable' disable>Saída</button>";
+								<button type='button' class='disable' disable>Fim</button>";
 
 						}elseif(($p1 != null) && ($p2 == null) && ($p3 == null) && ($p4 == null)){
 
 							echo "<h2 class='h2-ponto'>Registrar ponto de hoje: ".date('d/m/Y')."</h2>
 
-								<button type='button' class='disable' disable>Entrada</button>
+								<button type='button' class='disable' disable>Início</button>
 
 								<button type='button' id='almoco'>Saída Almoço</button>
 
 								<button type='button' class='disable' disable>Volta Almoço</button>
 
-								<button type='button' class='disable' disable>Saída</button>";
+								<button type='button' class='disable' disable>Fim</button>";
 
 						}elseif(($p1 != null) && ($p2 != null) && ($p3 == null) && ($p4 == null)){
 
 							echo "<h2 class='h2-ponto'>Registrar ponto de hoje: ".date('d/m/Y')."</h2>
 
-								<button type='button' class='disable' disable>Entrada</button>
+								<button type='button' class='disable' disable>Início</button>
 
 								<button type='button' class='disable' disable>Saída Almoço</button>
 
 								<button type='button' id='volta'>Volta Almoço</button>
 
-								<button type='button' class='disable' disable>Saída</button>";
+								<button type='button' class='disable' disable>Fim</button>";
 
 						}elseif(($p1 != null) && ($p2 != null) && ($p3 != null) && ($p4 == null)){
 
 							echo "<h2 class='h2-ponto'>Registrar ponto de hoje: ".date('d/m/Y')."</h2>
 
-								<button type='button' class='disable' disable>Entrada</button>
+								<button type='button' class='disable' disable>Início</button>
 
 								<button type='button' class='disable' disable>Saída Almoço</button>
 
 								<button type='button' class='disable' disable>Volta Almoço</button>
 
-								<button type='button' id='saida'>Saída</button>";
+								<button type='button' id='saida'>Fim</button>";
 
 						}else{
 
