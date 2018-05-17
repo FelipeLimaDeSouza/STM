@@ -14,7 +14,29 @@
 
         	try{
                 
-                $sql = "SELECT * FROM (SELECT ent.entrada_data_entrada, pes.pessoa_nome, pes.pessoa_rg, pes.pessoa_cpf, emp.empresa_nome, fun.funcionario_nome, ent.entrada_hora_entrada, ent.entrada_hora_saida, ent.entrada_data_saida, usu.usuario_nome, pes.pessoa_id, ent.entrada_id FROM tb_entradas ent INNER JOIN tb_pessoas pes ON pes.pessoa_id = ent.pessoa_id_entrada INNER JOIN tb_pessoas_empresas pesemp ON pesemp.pessoa_id_empresa = pes.pessoa_id INNER JOIN tb_empresas emp ON emp.empresa_id = pesemp.empresa_id_pessoa INNER JOIN tb_funcionarios fun ON fun.funcionario_id = ent.funcionario_id_entrada INNER JOIN tb_usuarios usu ON usu.usuario_id = ent.usuario_id_entrada WHERE ent.entrada_status = 0 UNION SELECT ent.entrada_data_entrada, pes.pessoa_nome, pes.pessoa_rg, pes.pessoa_cpf, emp.empresa_nome, fun.funcionario_nome, ent.entrada_hora_entrada, ent.entrada_hora_saida, ent.entrada_data_saida, usu.usuario_nome, pes.pessoa_id, ent.entrada_id FROM tb_entradas ent INNER JOIN tb_pessoas pes ON pes.pessoa_id = ent.pessoa_id_entrada INNER JOIN tb_pessoas_empresas pesemp ON pesemp.pessoa_id_empresa = pes.pessoa_id INNER JOIN tb_empresas emp ON emp.empresa_id = pesemp.empresa_id_pessoa INNER JOIN tb_veiculos_pessoas veipes ON veipes.pessoa_id_veiculo = pes.pessoa_id INNER JOIN tb_veiculos vei ON vei.veiculo_id = veipes.veiculo_id_pessoa INNER JOIN tb_funcionarios fun ON fun.funcionario_id = ent.funcionario_id_entrada INNER JOIN tb_usuarios usu ON usu.usuario_id = ent.usuario_id_entrada WHERE ent.entrada_status = 0) a ORDER BY entrada_id DESC";
+                $sql = "SELECT * FROM (SELECT ent.entrada_data_entrada, pes.pessoa_nome, pes.pessoa_rg, pes.pessoa_cpf, emp.empresa_nome, fun.funcionario_nome, ent.entrada_hora_entrada, ent.entrada_hora_saida, ent.entrada_data_saida, usu.usuario_nome, pes.pessoa_id, ent.entrada_id FROM tb_entradas ent INNER JOIN tb_pessoas pes ON pes.pessoa_id = ent.pessoa_id_entrada INNER JOIN tb_pessoas_empresas pesemp ON pesemp.pessoa_id_empresa = pes.pessoa_id INNER JOIN tb_empresas emp ON emp.empresa_id = pesemp.empresa_id_pessoa INNER JOIN tb_funcionarios fun ON fun.funcionario_id = ent.funcionario_id_entrada INNER JOIN tb_usuarios usu ON usu.usuario_id = ent.usuario_id_entrada WHERE ent.entrada_status = 0 UNION SELECT ent.entrada_data_entrada, pes.pessoa_nome, pes.pessoa_rg, pes.pessoa_cpf, emp.empresa_nome, fun.funcionario_nome, ent.entrada_hora_entrada, ent.entrada_hora_saida, ent.entrada_data_saida, usu.usuario_nome, pes.pessoa_id, ent.entrada_id FROM tb_entradas ent INNER JOIN tb_pessoas pes ON pes.pessoa_id = ent.pessoa_id_entrada INNER JOIN tb_pessoas_empresas pesemp ON pesemp.pessoa_id_empresa = pes.pessoa_id INNER JOIN tb_empresas emp ON emp.empresa_id = pesemp.empresa_id_pessoa INNER JOIN tb_veiculos_pessoas veipes ON veipes.pessoa_id_veiculo = pes.pessoa_id INNER JOIN tb_veiculos vei ON vei.veiculo_id = veipes.veiculo_id_pessoa INNER JOIN tb_funcionarios fun ON fun.funcionario_id = ent.funcionario_id_entrada INNER JOIN tb_usuarios usu ON usu.usuario_id = ent.usuario_id_entrada WHERE ent.entrada_status = 0) a ORDER BY entrada_id DESC LIMIT 50;";
+                
+                $stm = $this->pdo->prepare($sql);
+
+                $stm->execute();
+
+                $dados = $stm->fetchAll(PDO::FETCH_OBJ);
+
+                return $dados;
+                
+            }catch(PDOException $erro){
+                
+                echo $erro->getLine();
+                
+            }
+
+        }
+
+        public function retornaTodasEntradasDAO(){
+
+            try{
+                
+                $sql = "SELECT * FROM (SELECT ent.entrada_data_entrada, pes.pessoa_nome, pes.pessoa_rg, pes.pessoa_cpf, emp.empresa_nome, fun.funcionario_nome, ent.entrada_hora_entrada, ent.entrada_hora_saida, ent.entrada_data_saida, usu.usuario_nome, pes.pessoa_id, ent.entrada_id FROM tb_entradas ent INNER JOIN tb_pessoas pes ON pes.pessoa_id = ent.pessoa_id_entrada INNER JOIN tb_pessoas_empresas pesemp ON pesemp.pessoa_id_empresa = pes.pessoa_id INNER JOIN tb_empresas emp ON emp.empresa_id = pesemp.empresa_id_pessoa INNER JOIN tb_funcionarios fun ON fun.funcionario_id = ent.funcionario_id_entrada INNER JOIN tb_usuarios usu ON usu.usuario_id = ent.usuario_id_entrada WHERE ent.entrada_status = 0 UNION SELECT ent.entrada_data_entrada, pes.pessoa_nome, pes.pessoa_rg, pes.pessoa_cpf, emp.empresa_nome, fun.funcionario_nome, ent.entrada_hora_entrada, ent.entrada_hora_saida, ent.entrada_data_saida, usu.usuario_nome, pes.pessoa_id, ent.entrada_id FROM tb_entradas ent INNER JOIN tb_pessoas pes ON pes.pessoa_id = ent.pessoa_id_entrada INNER JOIN tb_pessoas_empresas pesemp ON pesemp.pessoa_id_empresa = pes.pessoa_id INNER JOIN tb_empresas emp ON emp.empresa_id = pesemp.empresa_id_pessoa INNER JOIN tb_veiculos_pessoas veipes ON veipes.pessoa_id_veiculo = pes.pessoa_id INNER JOIN tb_veiculos vei ON vei.veiculo_id = veipes.veiculo_id_pessoa INNER JOIN tb_funcionarios fun ON fun.funcionario_id = ent.funcionario_id_entrada INNER JOIN tb_usuarios usu ON usu.usuario_id = ent.usuario_id_entrada WHERE ent.entrada_status = 0) a ORDER BY entrada_id DESC LIMIT 2147483647 OFFSET 50;";
                 
                 $stm = $this->pdo->prepare($sql);
 

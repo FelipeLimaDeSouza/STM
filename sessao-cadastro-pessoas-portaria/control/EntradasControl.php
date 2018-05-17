@@ -20,6 +20,12 @@
 
         }
 
+        public function retornaTodasEntradas(){
+
+            return $this->model->retornaTodasEntradasDAO();
+
+        }
+
         public function retornaEntradasAtivas(){
 
             return $this->model->retornaEntradasAtivasDAO();

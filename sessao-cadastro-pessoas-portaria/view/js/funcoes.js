@@ -694,3 +694,19 @@ $('#valeounota').change(function(){
 	}
 
 });
+
+$('#ver-mais-entradas').click(function() {
+	var d = new Date();
+    d.setTime(d.getTime() + (15 * 60 * 1000));
+    var expires = 'expires='+d.toUTCString();
+	document.cookie = 'entradas_all=1;'+expires+'; path=/;';
+	location.reload();
+});
+
+$('#ver-menos-entradas').click(function() {
+	var d = new Date();
+    d.setTime(d.getTime() + (15 * 60 * 1000));
+    var expires = 'expires='+d.toUTCString();
+	document.cookie = 'entradas_all=0;'+expires+'; path=/;';
+	location.reload();
+});
