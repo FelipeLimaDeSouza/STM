@@ -110,7 +110,19 @@
 
 						<th>Recebida Por</th>
 
+						<?php
+
+							if($_SESSION['usuario_nivel'] <= 1){
+
+						?>
+
 						<th></th>
+
+						<?php 
+
+							}
+
+						?>
 
 					</tr>
 
@@ -166,7 +178,19 @@
 
 						<td><?php echo $reg->usuario_nome; ?></td>
 
+						<?php
+
+							if($_SESSION['usuario_nivel'] <= 1){
+
+						?>
+
 						<td><button type="button" class="buttons_alt button_alt_nota" id="<?php echo $reg->nota_id; ?>">Alterar</button></td>
+
+						<?php
+
+							}
+
+						?>
 
 					</tr>
 
@@ -326,7 +350,19 @@
 
 						<th>Recebida Por</th>
 
+						<?php
+
+							if($_SESSION['usuario_nivel'] <= 1){
+
+						?>
+
 						<th></th>
+
+						<?php 
+
+							}
+
+						?>
 
 					</tr>
 
@@ -380,7 +416,19 @@
 
 						<td><?php echo $reg->usuario_nome; ?></td>
 
+						<?php
+
+							if($_SESSION['usuario_nivel'] <= 1){
+
+						?>
+
 						<td><button type="button" class="buttons_alt button_alt_nota" id="<?php echo $reg->nota_id; ?>">Alterar</button></td>
+
+						<?php
+
+							}
+
+						?>
 
 					</tr>
 
@@ -538,7 +586,19 @@
 
 						<th>Recebida Por</th>
 
+						<?php
+
+							if($_SESSION['usuario_nivel'] <= 1){
+
+						?>
+
 						<th></th>
+
+						<?php 
+
+							}
+
+						?>
 
 					</tr>
 
@@ -594,7 +654,19 @@
 
 						<td><?php echo $reg->usuario_nome; ?></td>
 
+						<?php
+
+							if($_SESSION['usuario_nivel'] <= 1){
+
+						?>
+
 						<td><button type="button" class="buttons_alt button_alt_nota" id="<?php echo $reg->nota_id; ?>">Alterar</button></td>
+
+						<?php
+
+							}
+
+						?>
 
 					</tr>
 
