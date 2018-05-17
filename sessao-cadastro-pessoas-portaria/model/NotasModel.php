@@ -67,7 +67,7 @@
 
             try{
 
-                $sql = "SELECT nota.nota_id, nota.nota_data, nota.nota_hora, nota.nota_numero, nota.nota_vale, usu.usuario_nome, pes.pessoa_nome, pes.pessoa_id, emp.empresa_nome, emp.empresa_cnpj, emp.empresa_id FROM tb_notas nota INNER JOIN tb_usuarios usu ON usu.usuario_id = nota.usuario_id_nota INNER JOIN tb_pessoas pes ON pes.pessoa_id = nota.pessoa_id_nota INNER JOIN tb_empresas emp ON emp.empresa_id = nota.empresa_id_nota WHERE ? IS NOT NULL AND (emp.empresa_nome LIKE ? AND (nota.nota_data BETWEEN ? AND ?)) ORDER BY nota.nota_data ASC";
+                $sql = "SELECT nota.nota_id, nota.nota_data, nota.nota_hora, nota.nota_numero, nota.nota_vale, usu.usuario_nome, pes.pessoa_nome, pes.pessoa_id, emp.empresa_nome, emp.empresa_cnpj, emp.empresa_id FROM tb_notas nota INNER JOIN tb_usuarios usu ON usu.usuario_id = nota.usuario_id_nota INNER JOIN tb_pessoas pes ON pes.pessoa_id = nota.pessoa_id_nota INNER JOIN tb_empresas emp ON emp.empresa_id = nota.empresa_id_nota WHERE ? IS NOT NULL AND (emp.empresa_nome LIKE ? AND (nota.nota_data BETWEEN ? AND ?)) ORDER BY nota.nota_data, nota.nota_id ASC;";
                 
                 $stm = $this->pdo->prepare($sql);
 
