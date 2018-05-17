@@ -134,7 +134,19 @@
 
 						<td><?php echo $reg->usuario_nome; ?></td>
 
+						<?php
+
+							if($_SESSION['usuario_nivel'] <= 1){
+
+						?>
+
 						<td><button type="button" id="<?php echo $reg->entrada_id; ?>" class="button_reg_saida">Registrar Saída</button></td>
+
+						<?php
+
+							}
+
+						?>
 
 					</tr>
 
