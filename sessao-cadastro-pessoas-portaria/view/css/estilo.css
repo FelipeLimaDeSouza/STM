@@ -355,7 +355,7 @@ th, td{
 
 }
 
-.button_reg_saida, .button_alt_pessoa{
+.button_reg_saida, .button_alt_pessoa, .buttons_alt{
 
 	border: 0px;
     background: #000;
@@ -364,6 +364,17 @@ th, td{
     cursor: pointer;
     border-radius: 3px;
     height: 32px;
+
+}
+
+.textarea_motivo{
+
+	margin-top: 10px;
+    width: 350px;
+    resize: none;
+    max-width: 100%;
+    color: #000;
+    height: 100px;
 
 }
 

@@ -3,7 +3,7 @@
 	  <div class="modal-content">
 	    <span class="fechar">&times;</span>
 	    <p class="p-modal">Confirmar Registro de Saída</p>
-	    <button class="botao-modal">Ok</button>
+	    <button class="botao-modal" id="botao-modal-alerta">Ok</button>
 	  </div>
 
 	</div>

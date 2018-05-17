@@ -106,7 +106,7 @@
 
 						?>
 
-						<td><button type="button" id="<?php echo $reg->pessoa_id; ?>" class="button_alt_pessoa">Alterar</button></td>
+						<td><button type="button" id="<?php echo $reg->pessoa_id; ?>" class="buttons_alt button_alt_pessoa">Alterar</button></td>
 
 					</tr>
 

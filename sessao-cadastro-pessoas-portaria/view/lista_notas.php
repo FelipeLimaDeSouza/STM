@@ -74,7 +74,7 @@
 
 		<div class="div_imprimir">
 			
-			<button type="button" class="button_imprimir"></button>
+			<button type="button" class="button_imprimir" title="Gerar Planilha"></button>
 
 		</div>
 
@@ -109,6 +109,8 @@
 						<th>Entregue Por</th>
 
 						<th>Recebida Por</th>
+
+						<th></th>
 
 					</tr>
 
@@ -164,7 +166,115 @@
 
 						<td><?php echo $reg->usuario_nome; ?></td>
 
+						<td><button type="button" class="buttons_alt button_alt_nota" id="<?php echo $reg->nota_id; ?>">Alterar</button></td>
+
 					</tr>
+
+					<div id="modal-alt-nota<?php echo $reg->nota_id; ?>" class="modal">
+
+					  <div class="modal-content">
+					    <span class="fechar">&times;</span>
+					    <p class="p-modal">Alterar Nota</p>
+
+					    <form action="../control/AlterarNotaControl.php" method="post" class="form">
+
+					    	<div style="width: 100%;">
+
+					    		<?php
+
+									if($reg->nota_numero != null){
+
+								?>
+
+					    		<input type="text" name="input_numero" placeholder="Número da Nota" maxlength="20" value="<?php echo $reg->nota_numero; ?>">
+
+					    		<?php
+
+									}else{
+
+								?>
+
+	    						<input type="text" name="input_vale" placeholder="Preço do vale" maxlength="50" value="<?php echo $reg->nota_vale; ?>">
+
+	    						<?php
+
+	    							}
+
+	    						?>
+
+	    						<input type="hidden" name="input_id" value="<?php echo $reg->nota_id; ?>">
+
+					    		<select name="input_empresa">
+
+					    			<option value="0">Selecione a Empresa na qual pertence a Nota</option>
+
+					    			<?php
+
+					    				require_once '../control/EmpresasControl.php';
+
+					    				$empresasControlNota = new EmpresasControl();
+
+					    				$empNota = $empresasControlNota->retornaEmpresas();
+
+					    				$id_empresa = $reg->empresa_id;
+
+					    				foreach ($empNota as $regEmp) {
+					    					
+					    			?>
+					    			
+					    			<option value="<?php echo $regEmp->empresa_id; ?>" <?php if($id_empresa == $regEmp->empresa_id){ echo "selected";} ?>><?php echo $regEmp->empresa_nome; ?> / <?php echo $regEmp->empresa_cnpj; ?></option>
+
+					    			<?php
+
+					    				}
+
+					    			?>
+
+					    		</select>
+
+					    		<select name="input_pessoa">
+
+					    			<option value="0">Selecione a Pessoa que entregou a nota</option>
+
+					    			<?php
+
+					    				require_once '../control/PessoasControl.php';
+
+					    				$pessoasControlNota = new PessoasControl();
+
+					    				$pesNota = $pessoasControlNota->retornaPessoas();
+
+					    				$id_pessoa = $reg->pessoa_id;
+
+					    				foreach ($pesNota as $regPes) {
+					    					
+					    			?>
+					    			
+					    			<option value="<?php echo $regPes->pessoa_id; ?>" <?php if($id_pessoa == $regPes->pessoa_id){ echo "selected"; } ?>><?php echo $regPes->pessoa_nome; ?> / <?php echo $regPes->empresa_nome; ?></option>
+
+					    			<?php
+
+					    				}
+
+					    			?>
+
+					    		</select>
+
+					    		<div style="width: 100%;">
+
+					    			<textarea name="textarea_motivo" placeholder="Digite o motivo da alteração" class="textarea_motivo"></textarea>
+
+					    		</div>
+
+					    	</div>
+
+					    	<button type="submit" class="botao-modal">Alterar</button>
+
+					    </form>
+
+					  </div>
+
+					</div>
 
 					<?php
 
@@ -207,6 +317,8 @@
 						<th>Entregue Por</th>
 
 						<th>Recebida Por</th>
+
+						<th></th>
 
 					</tr>
 
@@ -260,7 +372,115 @@
 
 						<td><?php echo $reg->usuario_nome; ?></td>
 
+						<td><button type="button" class="buttons_alt button_alt_nota" id="<?php echo $reg->nota_id; ?>">Alterar</button></td>
+
 					</tr>
+
+					<div id="modal-alt-nota<?php echo $reg->nota_id; ?>" class="modal">
+
+					  <div class="modal-content">
+					    <span class="fechar">&times;</span>
+					    <p class="p-modal">Alterar Nota</p>
+
+					    <form action="../control/AlterarNotaControl.php" method="post" class="form">
+
+					    	<div style="width: 100%;">
+
+					    		<?php
+
+									if($reg->nota_numero != null){
+
+								?>
+
+					    		<input type="text" name="input_numero" placeholder="Número da Nota" maxlength="20" value="<?php echo $reg->nota_numero; ?>">
+
+					    		<?php
+
+									}else{
+
+								?>
+
+	    						<input type="text" name="input_vale" placeholder="Preço do vale" maxlength="50" value="<?php echo $reg->nota_vale; ?>">
+
+	    						<?php
+
+	    							}
+
+	    						?>
+
+	    						<input type="hidden" name="input_id" value="<?php echo $reg->nota_id; ?>">
+
+					    		<select name="input_empresa">
+
+					    			<option value="0">Selecione a Empresa na qual pertence a Nota</option>
+
+					    			<?php
+
+					    				require_once '../control/EmpresasControl.php';
+
+					    				$empresasControlNota = new EmpresasControl();
+
+					    				$empNota = $empresasControlNota->retornaEmpresas();
+
+					    				$id_empresa = $reg->empresa_id;
+
+					    				foreach ($empNota as $regEmp) {
+					    					
+					    			?>
+					    			
+					    			<option value="<?php echo $regEmp->empresa_id; ?>" <?php if($id_empresa == $regEmp->empresa_id){ echo "selected";} ?>><?php echo $regEmp->empresa_nome; ?> / <?php echo $regEmp->empresa_cnpj; ?></option>
+
+					    			<?php
+
+					    				}
+
+					    			?>
+
+					    		</select>
+
+					    		<select name="input_pessoa">
+
+					    			<option value="0">Selecione a Pessoa que entregou a nota</option>
+
+					    			<?php
+
+					    				require_once '../control/PessoasControl.php';
+
+					    				$pessoasControlNota = new PessoasControl();
+
+					    				$pesNota = $pessoasControlNota->retornaPessoas();
+
+					    				$id_pessoa = $reg->pessoa_id;
+
+					    				foreach ($pesNota as $regPes) {
+					    					
+					    			?>
+					    			
+					    			<option value="<?php echo $regPes->pessoa_id; ?>" <?php if($id_pessoa == $regPes->pessoa_id){ echo "selected"; } ?>><?php echo $regPes->pessoa_nome; ?> / <?php echo $regPes->empresa_nome; ?></option>
+
+					    			<?php
+
+					    				}
+
+					    			?>
+
+					    		</select>
+
+					    		<div style="width: 100%;">
+
+					    			<textarea name="textarea_motivo" placeholder="Digite o motivo da alteração" class="textarea_motivo"></textarea>
+
+					    		</div>
+
+					    	</div>
+
+					    	<button type="submit" class="botao-modal">Alterar</button>
+
+					    </form>
+
+					  </div>
+
+					</div>
 
 					<?php
 
@@ -301,6 +521,8 @@
 						<th>Entregue Por</th>
 
 						<th>Recebida Por</th>
+
+						<th></th>
 
 					</tr>
 
@@ -356,7 +578,115 @@
 
 						<td><?php echo $reg->usuario_nome; ?></td>
 
+						<td><button type="button" class="buttons_alt button_alt_nota" id="<?php echo $reg->nota_id; ?>">Alterar</button></td>
+
 					</tr>
+
+					<div id="modal-alt-nota<?php echo $reg->nota_id; ?>" class="modal">
+
+					  <div class="modal-content">
+					    <span class="fechar">&times;</span>
+					    <p class="p-modal">Alterar Nota</p>
+
+					    <form action="../control/AlterarNotaControl.php" method="post" class="form">
+
+					    	<div style="width: 100%;">
+
+					    		<?php
+
+									if($reg->nota_numero != null){
+
+								?>
+
+					    		<input type="text" name="input_numero" placeholder="Número da Nota" maxlength="20" value="<?php echo $reg->nota_numero; ?>">
+
+					    		<?php
+
+									}else{
+
+								?>
+
+	    						<input type="text" name="input_vale" placeholder="Preço do vale" maxlength="50" value="<?php echo $reg->nota_vale; ?>">
+
+	    						<?php
+
+	    							}
+
+	    						?>
+	    						
+	    						<input type="hidden" name="input_id" value="<?php echo $reg->nota_id; ?>">
+
+					    		<select name="input_empresa">
+
+					    			<option value="0">Selecione a Empresa na qual pertence a Nota</option>
+
+					    			<?php
+
+					    				require_once '../control/EmpresasControl.php';
+
+					    				$empresasControlNota = new EmpresasControl();
+
+					    				$empNota = $empresasControlNota->retornaEmpresas();
+
+					    				$id_empresa = $reg->empresa_id;
+
+					    				foreach ($empNota as $regEmp) {
+					    					
+					    			?>
+					    			
+					    			<option value="<?php echo $regEmp->empresa_id; ?>" <?php if($id_empresa == $regEmp->empresa_id){ echo "selected";} ?>><?php echo $regEmp->empresa_nome; ?> / <?php echo $regEmp->empresa_cnpj; ?></option>
+
+					    			<?php
+
+					    				}
+
+					    			?>
+
+					    		</select>
+
+					    		<select name="input_pessoa">
+
+					    			<option value="0">Selecione a Pessoa que entregou a nota</option>
+
+					    			<?php
+
+					    				require_once '../control/PessoasControl.php';
+
+					    				$pessoasControlNota = new PessoasControl();
+
+					    				$pesNota = $pessoasControlNota->retornaPessoas();
+
+					    				$id_pessoa = $reg->pessoa_id;
+
+					    				foreach ($pesNota as $regPes) {
+					    					
+					    			?>
+					    			
+					    			<option value="<?php echo $regPes->pessoa_id; ?>" <?php if($id_pessoa == $regPes->pessoa_id){ echo "selected"; } ?>><?php echo $regPes->pessoa_nome; ?> / <?php echo $regPes->empresa_nome; ?></option>
+
+					    			<?php
+
+					    				}
+
+					    			?>
+
+					    		</select>
+
+					    		<div style="width: 100%;">
+
+					    			<textarea name="textarea_motivo" placeholder="Digite o motivo da alteração" class="textarea_motivo"></textarea>
+
+					    		</div>
+
+					    	</div>
+
+					    	<button type="submit" class="botao-modal">Alterar</button>
+
+					    </form>
+
+					  </div>
+
+					</div>
 
 					<?php
 

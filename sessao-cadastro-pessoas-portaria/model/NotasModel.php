@@ -14,7 +14,7 @@
 
         	try{
                 
-                $sql = "SELECT nota.nota_data, nota.nota_hora, nota.nota_numero, nota.nota_vale, usu.usuario_nome, pes.pessoa_nome, emp.empresa_nome, emp.empresa_cnpj FROM tb_notas nota INNER JOIN tb_usuarios usu ON usu.usuario_id = nota.usuario_id_nota INNER JOIN tb_pessoas pes ON pes.pessoa_id = nota.pessoa_id_nota INNER JOIN tb_empresas emp ON emp.empresa_id = nota.empresa_id_nota ORDER BY nota.nota_id DESC;";
+                $sql = "SELECT nota.nota_id, nota.nota_data, nota.nota_hora, nota.nota_numero, nota.nota_vale, usu.usuario_nome, pes.pessoa_nome, pes.pessoa_id, emp.empresa_nome, emp.empresa_cnpj, emp.empresa_id FROM tb_notas nota INNER JOIN tb_usuarios usu ON usu.usuario_id = nota.usuario_id_nota INNER JOIN tb_pessoas pes ON pes.pessoa_id = nota.pessoa_id_nota INNER JOIN tb_empresas emp ON emp.empresa_id = nota.empresa_id_nota ORDER BY nota.nota_id DESC LIMIT 25;";
                 
                 $stm = $this->pdo->prepare($sql);
 
@@ -36,7 +36,7 @@
 
             try{
                 
-                $sql = "SELECT nota.nota_data, nota.nota_hora, nota.nota_numero, nota.nota_vale, usu.usuario_nome, pes.pessoa_nome, emp.empresa_nome, emp.empresa_cnpj FROM tb_notas nota INNER JOIN tb_usuarios usu ON usu.usuario_id = nota.usuario_id_nota INNER JOIN tb_pessoas pes ON pes.pessoa_id = nota.pessoa_id_nota INNER JOIN tb_empresas emp ON emp.empresa_id = nota.empresa_id_nota WHERE (nota.nota_numero LIKE ?) OR (emp.empresa_nome LIKE ?) OR (pes.pessoa_nome LIKE ?) OR (nota.nota_vale LIKE ?) ORDER BY nota.nota_id DESC;";
+                $sql = "SELECT nota.nota_id, nota.nota_data, nota.nota_hora, nota.nota_numero, nota.nota_vale, usu.usuario_nome, pes.pessoa_nome, pes.pessoa_id, emp.empresa_nome, emp.empresa_cnpj, emp.empresa_id FROM tb_notas nota INNER JOIN tb_usuarios usu ON usu.usuario_id = nota.usuario_id_nota INNER JOIN tb_pessoas pes ON pes.pessoa_id = nota.pessoa_id_nota INNER JOIN tb_empresas emp ON emp.empresa_id = nota.empresa_id_nota WHERE (nota.nota_numero LIKE ?) OR (emp.empresa_nome LIKE ?) OR (pes.pessoa_nome LIKE ?) OR (nota.nota_vale LIKE ?) ORDER BY nota.nota_id DESC;";
                 
                 $stm = $this->pdo->prepare($sql);
 
@@ -67,7 +67,7 @@
 
             try{
 
-                $sql = "SELECT nota.nota_data, nota.nota_hora, nota.nota_numero, nota.nota_vale, usu.usuario_nome, pes.pessoa_nome, emp.empresa_nome, emp.empresa_cnpj FROM tb_notas nota INNER JOIN tb_usuarios usu ON usu.usuario_id = nota.usuario_id_nota INNER JOIN tb_pessoas pes ON pes.pessoa_id = nota.pessoa_id_nota INNER JOIN tb_empresas emp ON emp.empresa_id = nota.empresa_id_nota WHERE ? IS NOT NULL AND (emp.empresa_nome LIKE ? AND (nota.nota_data BETWEEN ? AND ?)) ORDER BY nota.nota_data ASC";
+                $sql = "SELECT nota.nota_id, nota.nota_data, nota.nota_hora, nota.nota_numero, nota.nota_vale, usu.usuario_nome, pes.pessoa_nome, pes.pessoa_id, emp.empresa_nome, emp.empresa_cnpj, emp.empresa_id FROM tb_notas nota INNER JOIN tb_usuarios usu ON usu.usuario_id = nota.usuario_id_nota INNER JOIN tb_pessoas pes ON pes.pessoa_id = nota.pessoa_id_nota INNER JOIN tb_empresas emp ON emp.empresa_id = nota.empresa_id_nota WHERE ? IS NOT NULL AND (emp.empresa_nome LIKE ? AND (nota.nota_data BETWEEN ? AND ?)) ORDER BY nota.nota_data ASC";
                 
                 $stm = $this->pdo->prepare($sql);
 
@@ -175,6 +175,96 @@
                 $stm->execute();
 
                 return true;
+                
+            }catch(PDOException $erro){
+                
+                return false;
+                
+            }
+
+        }
+
+        public function alteraNotaNumeroDAO($nota_id, $nota_numero, $empresa_id, $pessoa_id, $usuario_id){
+
+            try{
+
+                $retornaId = $this->retornaIdNotaDAO($usuario_id);
+                
+                $sql = "UPDATE tb_notas SET nota_numero = ?, empresa_id_nota = ?, pessoa_id_nota = ?, usuario_id_nota = ? WHERE nota_id = ?;";
+                
+                $stm = $this->pdo->prepare($sql);
+
+                $stm->bindValue(1, $nota_numero);
+
+                $stm->bindValue(2, $empresa_id);
+
+                $stm->bindValue(3, $pessoa_id);
+
+                $stm->bindValue(4, $retornaId);
+
+                $stm->bindValue(5, $nota_id);
+
+                $stm->execute();
+
+                return true;
+                
+            }catch(PDOException $erro){
+                
+                return false;
+                
+            }
+
+        }
+
+        public function alteraNotaValeDAO($nota_id, $nota_vale, $empresa_id, $pessoa_id, $usuario_id){
+
+            try{
+
+                $retornaId = $this->retornaIdNotaDAO($usuario_id);
+                
+                $sql = "UPDATE tb_notas SET nota_vale = ?, empresa_id_nota = ?, pessoa_id_nota = ?, usuario_id_nota = ? WHERE nota_id = ?;";
+                
+                $stm = $this->pdo->prepare($sql);
+
+                $stm->bindValue(1, $nota_vale);
+
+                $stm->bindValue(2, $empresa_id);
+
+                $stm->bindValue(3, $pessoa_id);
+
+                $stm->bindValue(4, $retornaId);
+
+                $stm->bindValue(5, $nota_id);
+
+                $stm->execute();
+
+                return true;
+                
+            }catch(PDOException $erro){
+                
+                return false;
+                
+            }
+
+        }
+
+        public function inserirLogNotaDAO($nota_id, $motivo, $usuario_id){
+
+            try{
+
+                $retornaId = $this->retornaIdNotaDAO($usuario_id);
+
+                $sql = "INSERT INTO tb_log_alteracao_nota(nota_id_alteracao, alteracao_motivo, usuario_id_alteracao) VALUES(?, ?, ?);";
+                
+                $stm = $this->pdo->prepare($sql);
+
+                $stm->bindValue(1, $nota_id);
+
+                $stm->bindValue(2, $motivo);
+
+                $stm->bindValue(3, $retornaId);
+
+                $stm->execute();
                 
             }catch(PDOException $erro){
                 

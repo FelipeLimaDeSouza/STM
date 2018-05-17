@@ -292,37 +292,7 @@ function modal() {
 			        	modal.style.display = "block";
 
 
-					}/*else if(response.status == 1){
-
-						modais(span, botao, modal);
-
-						window.location.href = "home.php";
-						
-					}else if(response.status == 2){
-
-						modais(span, botao, modal);
-
-						modal.style.display = "block";
-
-			        	$(p).text(response.mensagem);
-
-					}else if(response.status == 3){
-
-						modais(span, botao, modal);
-
-						modal.style.display = "block";
-
-			        	$(p).text('Erro');
-
-					}else if(response.status == 4){
-
-						modais_load(span, botao, modal);
-
-						$(p).text(response.mensagem);
-
-						modal.style.display = "block";
-
-					}*/
+					}
 
 			      },
 			      
@@ -370,117 +340,135 @@ function modal() {
 
 }
 
-	function enviarForm() {
-		
-		$('.form').on('submit', function(){
+function enviarForm() {
+	
+	$('.form').on('submit', function(){
 
-		    $.ajax({
+		$('.modal').css('display', 'none');
 
-		      url: $(this).attr('action'),
-		      type: $(this).attr('method'),
-		      data: new FormData(this),
-		      dataType: 'json',
-		      processData: false,
-		      contentType:false,
+	    $.ajax({
 
-		      beforeSend: function(){
+	      url: $(this).attr('action'),
+	      type: $(this).attr('method'),
+	      data: new FormData(this),
+	      dataType: 'json',
+	      processData: false,
+	      contentType:false,
 
-		        $("#carregando").show("fast");
+	      beforeSend: function(){
 
-		      },
+	        $("#carregando").show("fast");
 
-		      complete: function(){
+	      },
 
-		        $("#carregando").hide("slow");
+	      complete: function(){
 
-		      },
+	        $("#carregando").hide("slow");
 
-		      success: function(response){
+	      },
 
-		      	var p = document.getElementsByClassName("p-modal")[0];
+	      success: function(response){
 
-		      	var modal = document.getElementById('modal-alerta');
+	      	var p = $('.p-modal');
 
-		    	var span = document.getElementsByClassName("fechar")[0];
+	      	var modal = document.getElementById('modal-alerta');
 
-		    	var botao = document.getElementsByClassName("botao-modal")[0];
+	    	var span = $('.fechar');
 
-		      	if(response.status == 0){
+	    	var botao = $('.botao-modal');
 
-		      		modais(span, botao, modal);
+	      	if(response.status == 0){
 
-		        	modal.style.display = "block";
+	      		modais(span, botao, modal);
 
-		        	$(p).text('Usuário ou senha inválidos');
+	        	modal.style.display = "block";
+
+	        	$(p).text('Usuário ou senha inválidos');
 
 
-				}else if(response.status == 1){
+			}else if(response.status == 1){
 
-					modais(span, botao, modal);
+				modais(span, botao, modal);
 
-					window.location.href = "home.php";
-					
-				}else if(response.status == 2){
+				window.location.href = "home.php";
+				
+			}else if(response.status == 2){
 
-					modais(span, botao, modal);
+				modais(span, botao, modal);
 
-					modal.style.display = "block";
+				modal.style.display = "block";
 
-		        	$(p).text(response.mensagem);
+	        	$(p).text(response.mensagem);
 
-				}else if(response.status == 3){
+			}else if(response.status == 3){
 
-					modais(span, botao, modal);
+				modais(span, botao, modal);
 
-					modal.style.display = "block";
+				modal.style.display = "block";
 
-		        	$(p).text('Erro');
+	        	$(p).text('Erro');
 
-				}else if(response.status == 4){
+			}else if(response.status == 4){
 
-					modais_load(span, botao, modal);
+				modais_load(span, botao, modal);
 
-					$(p).text(response.mensagem);
+				$(p).text(response.mensagem);
 
-					modal.style.display = "block";
+				modal.style.display = "block";
 
-				}
+			}else if(response.status == 6){
 
-		      },
-		      
-		      error: function(){
+				modais_load(span, botao, modal);
 
-		        var modal = document.getElementById('modal-erro');
+				$(p).text(response.mensagem);
 
-		        var span = document.getElementsByClassName("fechar")[1];
+				modal.style.display = "block";
 
-		        var botao = document.getElementsByClassName("botao-modal")[1];
+			}else if(response.status == 7){
 
-		        modal.style.display = "block";
+				modais_load(span, botao, modal);
 
-		        span.onclick = function() {
-		          modal.style.display = "none";
-		        }
+				$(p).text(response.mensagem);
 
-		        botao.onclick = function() {
-		          modal.style.display = "none";
-		        }
+				modal.style.display = "block";
 
-		        window.onclick = function(event) {
-		          if (event.target == modal) {
-		            modal.style.display = "none";
-		          }
-		        }
+			}
 
-		      }
+	      },
+	      
+	      error: function(){
 
-		    });
+	        var modal = document.getElementById('modal-erro');
 
-		    return false;
+	        var span = document.getElementsByClassName("fechar")[1];
 
-		});
+	        var botao = document.getElementsByClassName("botao-modal")[1];
 
-	}
+	        modal.style.display = "block";
+
+	        span.onclick = function() {
+	          modal.style.display = "none";
+	        }
+
+	        botao.onclick = function() {
+	          modal.style.display = "none";
+	        }
+
+	        window.onclick = function(event) {
+	          if (event.target == modal) {
+	            modal.style.display = "none";
+	          }
+	        }
+
+	      }
+
+	    });
+
+	    return false;
+
+	});
+
+}
 
 enviarForm();
 
@@ -650,6 +638,35 @@ $('.button_imprimir').click(function () {
        , datatype: $datatype.Table
        , filename: 'tabela'
     });
+});
+
+$('.fechar').click(function(){
+
+	$('.modal').css('display', 'none');
+
+});
+
+$('#botao-modal-alerta').click(function(){
+
+	$('.modal').css('display', 'none');
+
+	location.reload();
+
+});
+
+$('.button_alt_nota').click(function(){
+
+	var id = $(this).attr('id');
+
+	$('#modal-alt-nota'+id).css('display', 'block');
+
+	window.onclick = function(event) {
+		modal = document.getElementById('modal-alt-nota'+id);
+		if (event.target == modal) {
+			modal.style.display = 'none';
+	  	}
+	}
+
 });
 
 $('#valeounota').change(function(){

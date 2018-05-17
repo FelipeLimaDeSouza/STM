@@ -129,3 +129,18 @@ create table tb_notas(
     references						tb_empresas(empresa_id)
 
 );
+
+create table tb_log_alteracao_nota(
+
+	log_alteracao_nota_id			int						not null			auto_increment,
+	nota_id_alteracao				bigint						not null,
+    alteracao_motivo				text					not null,
+    alteracao_data_hora				datetime				not null			default now(),
+    usuario_id_alteracao			int						not null,
+	primary key(log_alteracao_nota_id),
+    constraint 						fk_alt_nota				foreign key(nota_id_alteracao)
+    references						tb_notas(nota_id),
+	constraint 						fk_alt_nota_usu			foreign key(usuario_id_alteracao)
+    references						tb_usuarios(usuario_id)
+
+);
