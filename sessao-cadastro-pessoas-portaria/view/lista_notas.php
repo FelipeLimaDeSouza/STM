@@ -170,6 +170,12 @@
 
 					</tr>
 
+					<?php
+
+								if($_SESSION['usuario_nivel'] <= 1){
+
+					?>
+
 					<div id="modal-alt-nota<?php echo $reg->nota_id; ?>" class="modal">
 
 					  <div class="modal-content">
@@ -277,6 +283,8 @@
 					</div>
 
 					<?php
+
+								}
 
 							}
 
@@ -376,6 +384,12 @@
 
 					</tr>
 
+					<?php
+
+								if($_SESSION['usuario_nivel'] <= 1){
+
+					?>
+
 					<div id="modal-alt-nota<?php echo $reg->nota_id; ?>" class="modal">
 
 					  <div class="modal-content">
@@ -483,6 +497,8 @@
 					</div>
 
 					<?php
+
+								}
 
 						}
 
@@ -582,6 +598,12 @@
 
 					</tr>
 
+					<?php
+
+								if($_SESSION['usuario_nivel'] <= 1){
+
+					?>
+
 					<div id="modal-alt-nota<?php echo $reg->nota_id; ?>" class="modal">
 
 					  <div class="modal-content">
@@ -613,7 +635,7 @@
 	    							}
 
 	    						?>
-	    						
+
 	    						<input type="hidden" name="input_id" value="<?php echo $reg->nota_id; ?>">
 
 					    		<select name="input_empresa">
@@ -689,6 +711,8 @@
 					</div>
 
 					<?php
+
+								}
 
 							}
 
